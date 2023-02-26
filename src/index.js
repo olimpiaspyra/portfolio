@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 import '../src/styles/normalize.scss';
-import '../src/styles/global.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);

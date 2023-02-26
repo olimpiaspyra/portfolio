@@ -44,6 +44,15 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 20000,
+          },
+        },
+      },
     ],
   },
 };
