@@ -36,46 +36,74 @@ const StyledLogo = styled.div`
   font-size: 1.3rem;
 `;
 
-const StyledLinks = styled.ul`
+const StyledMobile = styled.div`
+  display: none;
+  color: var(--lightest-slate);
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    display: flex;
+    align-items: center;
+    top: 0;
+    right: 0;
+    font-size: 1.3rem;
+    cursor: pointer;
+  }
+`;
+
+const StyledMenu = styled.ul`
   display: flex;
   align-items: center;
   padding: 0;
   margin: 0;
   list-style: none;
+  text-align: center;
 
-    li {
-      font-size: 1.3rem;
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
 
-      a {
-        padding: 10px;
-      }
-    }
+const StyledItems = styled.li`
+  display: flex;
+  height: 100px;
+`;
+
+const StyledLinks = styled.a`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 1.3rem;
+
+  :hover {
+    color: var(--green);
   }
 `;
 
 const Nav = () => {
   return (
-    <>
-      <StyledHeader>
-        <StyledNav>
-          <StyledLogo>Logo</StyledLogo>
-          <StyledLinks>
-            <li>
-              <a>About</a>
-            </li>
-            <li>
-              <a>Projects</a>
-            </li>
-            <li>
-              <a>Skills</a>
-            </li>
-            <li>
-              <a>Contact</a>
-            </li>
-          </StyledLinks>
-        </StyledNav>
-      </StyledHeader>
-    </>
+    <StyledHeader>
+      <StyledNav>
+        <StyledLogo>Logo</StyledLogo>
+        <StyledMobile>icon</StyledMobile>
+        <StyledMenu>
+          <StyledItems>
+            <StyledLinks>About</StyledLinks>
+          </StyledItems>
+          <StyledItems>
+            <StyledLinks>Projects</StyledLinks>
+          </StyledItems>
+          <StyledItems>
+            <StyledLinks>Skills</StyledLinks>
+          </StyledItems>
+          <StyledItems>
+            <StyledLinks>Contact</StyledLinks>
+          </StyledItems>
+        </StyledMenu>
+      </StyledNav>
+    </StyledHeader>
   );
 };
 export default Nav;
