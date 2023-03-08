@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledSidebar = styled.aside`
@@ -75,7 +76,7 @@ list-style: none;
   }
 `;
 
-const StyledLinks = styled.a`
+const StyledLinks = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -102,10 +103,10 @@ const Sidebar = ({toggle, isOpen}) => {
       </StyledMobile>
       <StyledWrapper>
         <StyledMenu>
-          <li><StyledLinks>About</StyledLinks></li>
-          <li><StyledLinks>Projects</StyledLinks></li>
-          <li><StyledLinks>Skills</StyledLinks></li>
-          <li><StyledLinks>Contact</StyledLinks></li>
+          <li><StyledLinks to='about'>About</StyledLinks></li>
+          <li><StyledLinks to='projects'>Projects</StyledLinks></li>
+          <li><StyledLinks to='skills'>Skills</StyledLinks></li>
+          <li><StyledLinks to='contact'>Contact</StyledLinks></li>
         </StyledMenu>
       </StyledWrapper>
     </StyledSidebar>

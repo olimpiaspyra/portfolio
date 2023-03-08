@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -64,14 +65,14 @@ const StyledMobile = styled.div`
       transition: all 0.3s linear
 
       &:nth-child(1) {
-        transform: ${({isOpen}) => isOpen ? 'rotate(45deg)' : 'rotate(0)'}
+        transform: ${({isOpen}) => (isOpen ? 'rotate(45deg)' : 'rotate(0)')}
       }
       &:nth-child(2) {
-        transform: ${({isOpen}) => isOpen ? 'translateX(100%)' : 'translateX(0)'};
-        opacity: ${({isOpen}) => isOpen ? 0 : 1};
+        transform: ${({isOpen}) => (isOpen ? 'translateX(100%)' : 'translateX(0)')};
+        opacity: ${({isOpen}) => (isOpen ? 0 : 1)};
       }
       &:nth-child(3) {
-        transform: ${({isOpen}) => isOpen ? 'rotate(-45deg)' : 'rotate(0)'}
+        transform: ${({isOpen}) => (isOpen ? 'rotate(-45deg)' : 'rotate(0)')}
       }
     }
   }
@@ -95,13 +96,14 @@ const StyledItems = styled.li`
   height: 100px;
 `;
 
-const StyledLinks = styled.a`
+const StyledLinks = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
   cursor: pointer;
   padding: 10px;
   font-size: 1.3rem;
+  color: var(--lightest-slate);
 
   :hover {
     color: var(--green);
@@ -120,16 +122,16 @@ const Navbar = ({toggle, isOpen}) => {
         </StyledMobile>
         <StyledMenu>
           <StyledItems>
-            <StyledLinks>About</StyledLinks>
+            <StyledLinks to='about'>About</StyledLinks>
           </StyledItems>
           <StyledItems>
-            <StyledLinks>Projects</StyledLinks>
+            <StyledLinks to='projects'>Projects</StyledLinks>
           </StyledItems>
           <StyledItems>
-            <StyledLinks>Skills</StyledLinks>
+            <StyledLinks to='skills'>Skills</StyledLinks>
           </StyledItems>
           <StyledItems>
-            <StyledLinks>Contact</StyledLinks>
+            <StyledLinks to='contact'>Contact</StyledLinks>
           </StyledItems>
         </StyledMenu>
       </StyledNav>
