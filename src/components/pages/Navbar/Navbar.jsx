@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -43,11 +44,36 @@ const StyledMobile = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     display: flex;
+    position: fixed;
+    justify-content: space-around;
+    flex-flow: column nowrap;
     align-items: center;
-    top: 0;
-    right: 0;
+    top: 40px;
+    right: 30px;
     font-size: 1.3rem;
     cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+
+    div {
+      width: 2rem;
+      height: 0.25rem;
+      background-color: var(--lightest-slate);
+      border-radius: 10px;
+      transform-origin: 1px;
+      transition: all 0.3s linear
+
+      &:nth-child(1) {
+        transform: ${({isOpen}) => isOpen ? 'rotate(45deg)' : 'rotate(0)'}
+      }
+      &:nth-child(2) {
+        transform: ${({isOpen}) => isOpen ? 'translateX(100%)' : 'translateX(0)'};
+        opacity: ${({isOpen}) => isOpen ? 0 : 1};
+      }
+      &:nth-child(3) {
+        transform: ${({isOpen}) => isOpen ? 'rotate(-45deg)' : 'rotate(0)'}
+      }
+    }
   }
 `;
 
@@ -82,12 +108,16 @@ const StyledLinks = styled.a`
   }
 `;
 
-const Nav = () => {
+const Navbar = ({toggle, isOpen}) => {
   return (
     <StyledHeader>
       <StyledNav>
         <StyledLogo>Logo</StyledLogo>
-        <StyledMobile>icon</StyledMobile>
+        <StyledMobile isOpen={isOpen} onClick={toggle}>
+          <div />
+          <div />
+          <div />
+        </StyledMobile>
         <StyledMenu>
           <StyledItems>
             <StyledLinks>About</StyledLinks>
@@ -106,4 +136,10 @@ const Nav = () => {
     </StyledHeader>
   );
 };
-export default Nav;
+
+Navbar.propTypes = {
+  toggle: PropTypes.func,
+  isOpen: PropTypes.bool,
+};
+
+export default Navbar;

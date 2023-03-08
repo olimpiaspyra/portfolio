@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const StyledSidebar = styled.aside`
@@ -9,6 +10,7 @@ const StyledSidebar = styled.aside`
   background-color: var(--navy);
   display: grid;
   align-items: center;
+  font-family: var(--font-mono);
   top: 0;
   left: 0;
   transition: 0.3s ease-in-out;
@@ -16,18 +18,44 @@ const StyledSidebar = styled.aside`
   top: ${({isOpen}) => (isOpen ? '0' : '-100%')};
 `;
 
-const StyledCloseIcon = styled.div`
+const StyledMobile = styled.div`
+  display: none;
   color: var(--lightest-slate);
-`;
 
-const StyledIcon = styled.div`
-  position: absolute;
-  top: 1.2rem;
-  right: 1.5rem;
-  background: transparent;
-  font-size: 2rem;
-  cursor: pointer;
-  outline: none;
+  @media screen and (max-width: 768px) {
+    display: block;
+    display: flex;
+    position: fixed;
+    justify-content: space-around;
+    flex-flow: column nowrap;
+    align-items: center;
+    top: 40px;
+    right: 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+
+    div {
+      width: 2rem;
+      height: 0.25rem;
+      background-color: var(--lightest-slate);
+      border-radius: 10px;
+      transform-origin: 1px;
+      transition: all 0.3s linear;
+
+      &:nth-child(1) {
+        transform: ${({isOpen}) => isOpen ? 'rotate(45deg)' : 'rotate(0)'}
+      }
+      &:nth-child(2) {
+        transform: ${({isOpen}) => isOpen ? 'translateX(100%)' : 'translateX(0)'};
+        opacity: ${({isOpen}) => isOpen ? 0 : 1};
+      }
+      &:nth-child(3) {
+        transform: ${({isOpen}) => isOpen ? 'rotate(-45deg)' : 'rotate(0)'}
+      }
+    }
+  }
 `;
 
 const StyledWrapper = styled.div`
@@ -35,17 +63,19 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledMenu = styled.ul`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 80px);
-  text-align: center;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+align-items: center;
+height: 250px;
+list-style: none;
 
   @media screen and (max-width: 768px) {
     grid-template-rows: repeat(4, 60px);
   }
 `;
 
-const StyledLinks = styled.ul`
+const StyledLinks = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,7 +84,7 @@ const StyledLinks = styled.ul`
   list-style:none;
   transition: 0.2s ease-in-out;
   color: var(--lightest-slate);
-  cursor: pointer
+  cursor: pointer;
 
   :hover {
     color: var(--green);
@@ -62,23 +92,29 @@ const StyledLinks = styled.ul`
   }
 `;
 
-const Sidebar = () => {
+const Sidebar = ({toggle, isOpen}) => {
   return (
-    <StyledSidebar>
-      <StyledIcon>
-        icon
-        <StyledCloseIcon />
-      </StyledIcon>
+    <StyledSidebar isOpen={isOpen}>
+      <StyledMobile isOpen={isOpen} onClick={toggle}>
+        <div />
+        <div />
+        <div />
+      </StyledMobile>
       <StyledWrapper>
         <StyledMenu>
-          <StyledLinks>About</StyledLinks>
-          <StyledLinks>Projects</StyledLinks>
-          <StyledLinks>Skills</StyledLinks>
-          <StyledLinks>Contact</StyledLinks>
+          <li><StyledLinks>About</StyledLinks></li>
+          <li><StyledLinks>Projects</StyledLinks></li>
+          <li><StyledLinks>Skills</StyledLinks></li>
+          <li><StyledLinks>Contact</StyledLinks></li>
         </StyledMenu>
       </StyledWrapper>
     </StyledSidebar>
   );
+};
+
+Sidebar.propTypes = {
+  toggle: PropTypes.func,
+  isOpen: PropTypes.bool,
 };
 
 export default Sidebar;
