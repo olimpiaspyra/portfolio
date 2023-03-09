@@ -2,6 +2,7 @@ import React, {Fragment, useState} from 'react';
 
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
+import Contact from '../Contact/Contact';
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +13,9 @@ const Home = () => {
 
   return (
     <Fragment>
-      <Navbar  />
+      <Navbar />
       <Sidebar isOpen={isOpen} toggle={toggle} />
+      <Contact />
     </Fragment>
   );
 };
