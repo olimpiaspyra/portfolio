@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import styled from 'styled-components';
 
 import IconGitHub from '../../../assets/icons/github';
@@ -9,6 +9,7 @@ const StyledLeftSide = styled.aside`
   bottom: 0;
   width: 50px;
   color: var(--lightest-slate);
+  font-family: var(--font-mono);
 `;
 
 const StyledSocialList = styled.ul`
@@ -50,28 +51,58 @@ const StyledSocialList = styled.ul`
       color: var(--green);
     }
   }
+  .mail {
+    writing-mode: vertical-rl;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+  }
+`;
+
+const StyledRightSide = styled.aside`
+  position: fixed;
+  bottom: 0;
+  width: 50px;
+  color: var(--lightest-slate);
+  right: 0;
+  font-family: var(--font-mono);
 `;
 
 const Contact = () => {
   return (
-    <StyledLeftSide>
-      <StyledSocialList>
-        <li>
-          <a href='https://github.com/olimpiaspyra' target='_blank' rel='noreferrer'>
-            <IconGitHub />
-          </a>
-        </li>
-        <li>
-          <a
-            href='https://www.linkedin.com/in/olimpia-spyra/'
-            target='_blank'
-            rel='noreferrer'
-          >
-            <IconLinkedin />
-          </a>
-        </li>
-      </StyledSocialList>
-    </StyledLeftSide>
+    <Fragment>
+      <StyledLeftSide>
+        <StyledSocialList>
+          <li>
+            <a href='https://github.com/olimpiaspyra' target='_blank' rel='noreferrer'>
+              <IconGitHub />
+            </a>
+          </li>
+          <li>
+            <a
+              href='https://www.linkedin.com/in/olimpia-spyra/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <IconLinkedin />
+            </a>
+          </li>
+        </StyledSocialList>
+      </StyledLeftSide>
+      <StyledRightSide>
+        <StyledSocialList>
+          <li>
+            <a
+              className='mail'
+              href='mailto: olimpia.spyra@gmail.com'
+              target='_blank'
+              rel='noreferrer'
+            >
+              olimpia.spyra@gmail.com
+            </a>
+          </li>
+        </StyledSocialList>
+      </StyledRightSide>
+    </Fragment>
   );
 };
 
