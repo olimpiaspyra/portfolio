@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import GlobalStyle from '../../styles/global';
+import GlobalStyle from '../../../styles/global';
 
 const Layout = ({children}) => {
   return (

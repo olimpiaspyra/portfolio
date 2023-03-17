@@ -14,7 +14,7 @@ const StyledSidebar = styled.aside`
   font-family: var(--font-mono);
   top: 0;
   left: 0;
-  transition: 0.3s ease-in-out;
+  transition: 0.6s ease-in-out;
   opacity: ${({isOpen}) => (isOpen ? '100%' : '0')};
   top: ${({isOpen}) => (isOpen ? '0' : '-100%')};
 `;
@@ -43,17 +43,17 @@ const StyledMobile = styled.div`
       background-color: var(--lightest-slate);
       border-radius: 10px;
       transform-origin: 1px;
-      transition: all 0.3s linear;
+      transition: all 0.2s linear;
 
       &:nth-child(1) {
-        transform: ${({isOpen}) => isOpen ? 'rotate(45deg)' : 'rotate(0)'}
+        transform: ${({isOpen}) => (isOpen ? 'rotate(45deg)' : 'rotate(0)')};
       }
       &:nth-child(2) {
-        transform: ${({isOpen}) => isOpen ? 'translateX(100%)' : 'translateX(0)'};
-        opacity: ${({isOpen}) => isOpen ? 0 : 1};
+        transform: ${({isOpen}) => (isOpen ? 'translateX(100%)' : 'translateX(0)')};
+        opacity: ${({isOpen}) => (isOpen ? 0 : 1)};
       }
       &:nth-child(3) {
-        transform: ${({isOpen}) => isOpen ? 'rotate(-45deg)' : 'rotate(0)'}
+        transform: ${({isOpen}) => (isOpen ? 'rotate(-45deg)' : 'rotate(0)')};
       }
     }
   }
@@ -64,12 +64,12 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledMenu = styled.ul`
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-align-items: center;
-height: 250px;
-list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 250px;
+  list-style: none;
 
   @media screen and (max-width: 768px) {
     grid-template-rows: repeat(4, 60px);
@@ -82,7 +82,7 @@ const StyledLinks = styled(Link)`
   justify-content: center;
   font-size: 1.5rem;
   text-decoration: none;
-  list-style:none;
+  list-style: none;
   transition: 0.2s ease-in-out;
   color: var(--lightest-slate);
   cursor: pointer;
@@ -103,10 +103,24 @@ const Sidebar = ({toggle, isOpen}) => {
       </StyledMobile>
       <StyledWrapper>
         <StyledMenu>
-          <li><StyledLinks to='about'>About</StyledLinks></li>
-          <li><StyledLinks to='projects'>Projects</StyledLinks></li>
-          <li><StyledLinks to='skills'>Skills</StyledLinks></li>
-          <li><StyledLinks to='contact'>Contact</StyledLinks></li>
+          <li>
+            <StyledLinks to='about' onClick={toggle}>
+              About
+            </StyledLinks>
+          </li>
+          <li>
+            <StyledLinks to='projects' onClick={toggle}>
+              Projects
+            </StyledLinks>
+          </li>
+          <li>
+            <StyledLinks to='skills' onClick={toggle}>
+              Skills
+            </StyledLinks>
+          </li>
+          <li>
+            <StyledLinks to='contact' onClick={toggle}>Contact</StyledLinks>
+          </li>
         </StyledMenu>
       </StyledWrapper>
     </StyledSidebar>
