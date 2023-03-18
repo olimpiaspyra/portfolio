@@ -7,7 +7,7 @@ const StyledMainContainer = styled.main`
   width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  padding: 300px 150px;
+  padding: 0 150px;
 `;
 
 const MainContainer = () => {
