@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import HeroSection from '../../pages/HeroSection/HeroSection';
+import AboutSection from '../../pages/AboutSection/AboutSection';
 
 const StyledMainContainer = styled.main`
   width: 100%;
@@ -13,8 +14,8 @@ const StyledMainContainer = styled.main`
 const MainContainer = () => {
   return (
     <StyledMainContainer>
-      <HeroSection>
-      </HeroSection>
+      <HeroSection/>
+      <AboutSection/>
     </StyledMainContainer>
   );
 };

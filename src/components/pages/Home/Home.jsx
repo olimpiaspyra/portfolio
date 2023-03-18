@@ -17,7 +17,7 @@ const Home = () => {
       <Navbar />
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Contact />
-      <MainContainer />
+      <MainContainer/>
     </Fragment>
   );
 };
