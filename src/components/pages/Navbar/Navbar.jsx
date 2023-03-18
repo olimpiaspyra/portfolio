@@ -14,6 +14,7 @@ const StyledHeader = styled.header`
   justify-content: center;
   align-items: center;
   z-index: 10;
+  background-color: var(--navy);
 
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;

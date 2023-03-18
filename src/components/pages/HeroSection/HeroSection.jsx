@@ -79,7 +79,7 @@ const HeroSection = () => {
       <h1>Hi, my name is</h1>
       <h2>Olimpia Spyra.</h2>
       <h3>I build a modern website.</h3>
-      <p>I am junior front end developer and I am constantly improving my skills.</p>
+      <p>I am a junior front end developer and I am constantly improving my skills.</p>
     </StyledContainer>
   );
 };
