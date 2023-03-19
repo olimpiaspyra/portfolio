@@ -5,6 +5,7 @@ import HeroSection from '../../pages/HeroSection/HeroSection';
 import AboutSection from '../../pages/AboutSection/AboutSection';
 import ProjectsSection from '../../pages/ProjectsSection/Projects';
 import SkillsSection from '../../pages/SkillsSection/SkillsSections';
+import ContactSection from '../../pages/ContactSection/ContactSection';
 
 const StyledMainContainer = styled.main`
   width: 100%;
@@ -19,7 +20,8 @@ const MainContainer = () => {
       <HeroSection />
       <AboutSection />
       <ProjectsSection />
-      <SkillsSection/>
+      <SkillsSection />
+      <ContactSection />
     </StyledMainContainer>
   );
 };

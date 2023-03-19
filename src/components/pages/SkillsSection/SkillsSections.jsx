@@ -8,6 +8,10 @@ const StyledContainer = styled.section`
   padding: 0 50px;
   min-height: 100vh;
 
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+  }
+
   h2 {
     display: flex;
     align-items: center;
