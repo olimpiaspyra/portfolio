@@ -1,5 +1,9 @@
 import React from 'react';
+import {useForm} from 'react-hook-form';
+import {yupResolver} from '@hookform/resolvers/yup';
+import * as yup from 'yup';
 import styled from 'styled-components';
+
 
 const StyledContainer = styled.section`
 max-width: 1000px;
@@ -60,6 +64,7 @@ const StyledSection = styled.div`
   input {
     width: 350px;
     height: 40px;
+    padding: 10px;
     border: 1px solid var(--green);
     background-color: var(--navy);
     box-shadow: 5px 5px 10px #010911, -2px -2px 10px #0f60a8;
@@ -71,10 +76,11 @@ const StyledSection = styled.div`
     max-width: 500px;
     min-height: 115px;
     max-height: 300px;
+    padding: 10px;
     border: 1px solid var(--green);
     background-color: var(--navy);
     box-shadow: 5px 5px 10px #010911, -2px -2px 10px #0f60a8;
-    color: var(--slate);
+    color: var(--lightest-slate);
   }
 
   button {
@@ -96,23 +102,73 @@ const StyledSection = styled.div`
       background-color: var(--green-tint);
     }
   }
+
+  .errors {
+    padding-top: 5px;
+    text-align: center;
+    color: red;
+    font-size: 1.6rem;
+  }
 `;
 
+const schema = yup
+  .object({
+    name: yup
+      .string()
+      .required('Name must be at least 3 characters and no more than 15 characters')
+      .min(3)
+      .max(15),
+    email: yup.string().required('Required').email('Please Enter A Valid Email!'),
+    subject: yup.string().required('Required').min(3),
+    message: yup.string().required('Required').min(3),
+  })
+  .required();
+
 const ContactSection = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: {errors},
+    reset,
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      subject: '',
+      message: '',
+    },
+    resolver: yupResolver(schema),
+  });
+
+  const handleOnSubmit = data => {
+    console.log(data);
+    reset();
+  };
+
   return (
     <StyledContainer>
       <h2>Contact</h2>
       <StyledSection>
-        <form action='post' noValidate>
+        <form action='post' noValidate onSubmit={handleSubmit(handleOnSubmit)}>
           <h3>Let is stay in touch</h3>
           <label> Your name</label>
-          <input type='text' />
+          <input type='text' {...register('name')} />
+          <div className='errors'>{errors.name?.message}</div>
           <label>Your email</label>
-          <input type='text' />
+          <input type='text' {...register('email')} />
+          <div className='errors'>{errors.email?.message}</div>
           <label>Subject</label>
-          <input type='text' />
+          <input type='text' {...register('subject')} />
+          <div className='errors'>{errors.subject?.message}</div>
           <label>Message</label>
-          <textarea name='' id='' cols='37' rows='5'></textarea>
+          <textarea
+            name=''
+            id=''
+            cols='37'
+            rows='5'
+            {...register('message')}
+          ></textarea>
+          <div className='errors'>{errors?.message?.message}</div>
           <button type='submit'>Send</button>
         </form>
       </StyledSection>
