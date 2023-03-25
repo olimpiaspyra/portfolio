@@ -3,9 +3,10 @@ import styled from 'styled-components';
 
 import HeroSection from '../../pages/HeroSection/HeroSection';
 import AboutSection from '../../pages/AboutSection/AboutSection';
-import ProjectsSection from '../../pages/ProjectsSection/Projects';
+import ProjectsSection from '../../pages/ProjectsSection/ProjectsSection';
 import SkillsSection from '../../pages/SkillsSection/SkillsSections';
-import ContactSection from '../../pages/ContactSection/ContactSection';
+import FormSection from '../../pages/FormSection/FormSection';
+import FooterSection from '../../pages/FooterSection/FooterSection';
 
 const StyledMainContainer = styled.main`
   width: 100%;
@@ -21,7 +22,8 @@ const MainContainer = () => {
       <AboutSection />
       <ProjectsSection />
       <SkillsSection />
-      <ContactSection />
+      <FormSection/>
+      <FooterSection />
     </StyledMainContainer>
   );
 };
