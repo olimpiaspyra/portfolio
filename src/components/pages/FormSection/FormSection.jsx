@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import styled from 'styled-components';
 
+import FormModal from '../FormModal/FormModal';
 
 const StyledContainer = styled.section`
 max-width: 1000px;
@@ -125,6 +126,26 @@ const schema = yup
   .required();
 
 const FormSection = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const [modalContent, setModalContent] = useState({
+    title: 'The message was sent successfully',
+    body: 'Thanks for your message! I will answer as soon as possible 😀',
+    isSucceeded: true,
+  });
+
+  const successfullySend = {
+    title: 'The message has been sent successfully',
+    body: `Hi! Thanks for your message! I will answer as soon as possible 😀`,
+    isSucceeded: true,
+  };
+
+  const unsuccessfullySend = {
+    title: 'Failed to send message',
+    body: `Hi! There is problem with sending the message. You can try again later or contact me by email - olimpia.spyra@gmail.com`,
+    isSucceeded: false,
+  };
+
   const {
     register,
     handleSubmit,
@@ -142,14 +163,24 @@ const FormSection = () => {
 
   const handleOnSubmit = data => {
     console.log(data);
+    if (data) {
+      setModalOpen(true);
+      setModalContent({...successfullySend});
+    }
+
     reset();
+  };
+
+  const onError = () => {
+    setModalOpen(true);
+    setModalContent({...unsuccessfullySend});
   };
 
   return (
     <StyledContainer>
       <h2>Contact</h2>
       <StyledSection>
-        <form action='post' noValidate onSubmit={handleSubmit(handleOnSubmit)}>
+        <form action='post' noValidate onSubmit={handleSubmit(handleOnSubmit, onError)}>
           <h3>Let is stay in touch</h3>
           <label> Your name</label>
           <input type='text' {...register('name')} />
@@ -171,6 +202,11 @@ const FormSection = () => {
           <div className='errors'>{errors?.message?.message}</div>
           <button type='submit'>Send</button>
         </form>
+        <FormModal
+          isModalOpen={isModalOpen}
+          closeModal={() => setModalOpen(false)}
+          modalContent={modalContent}
+        />
       </StyledSection>
     </StyledContainer>
   );
