@@ -110,7 +110,7 @@ const StyledImage = styled.div`
 
 const AboutSection = () => {
   return (
-    <StyledContainer>
+    <StyledContainer id='about'>
       <h2>About Me</h2>
       <StyledSection>
         <StyledText>

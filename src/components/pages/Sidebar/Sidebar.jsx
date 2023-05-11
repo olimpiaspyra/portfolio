@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-scroll';
 import styled from 'styled-components';
 
 const StyledSidebar = styled.aside`
@@ -104,22 +104,52 @@ const Sidebar = ({toggle, isOpen}) => {
       <StyledWrapper>
         <StyledMenu>
           <li>
-            <StyledLinks to='about' onClick={toggle}>
+            <StyledLinks
+              to='about'
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              onClick={toggle}
+            >
               About
             </StyledLinks>
           </li>
           <li>
-            <StyledLinks to='projects' onClick={toggle}>
+            <StyledLinks
+              to='projects'
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              onClick={toggle}
+            >
               Projects
             </StyledLinks>
           </li>
           <li>
-            <StyledLinks to='skills' onClick={toggle}>
+            <StyledLinks
+              to='skills'
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              onClick={toggle}
+            >
               Skills
             </StyledLinks>
           </li>
           <li>
-            <StyledLinks to='contact' onClick={toggle}>Contact</StyledLinks>
+            <StyledLinks
+              to='contact'
+              spy={true}
+              smooth={true}
+              offset={-100}
+              duration={500}
+              onClick={toggle}
+            >
+              Contact
+            </StyledLinks>
           </li>
         </StyledMenu>
       </StyledWrapper>

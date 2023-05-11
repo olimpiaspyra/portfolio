@@ -8,6 +8,10 @@ const StyledContainer = styled.section`
   padding: 0 50px;
   min-height: 100vh;
 
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+  }
+
   h2 {
     display: flex;
     align-items: center;
@@ -95,20 +99,20 @@ const StyledLinks = styled.div`
 `;
 
 const StyledImage = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-flex-basis: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 50%;
 
-img {
-  width: 100%;
-  height: 100%;
-}
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const ProjectsSection = () => {
   return (
-    <StyledContainer>
+    <StyledContainer id='projects'>
       <h2>Projects</h2>
       <StyledSection>
         <StyledDescription>

@@ -177,7 +177,7 @@ const FormSection = () => {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer id='contact'>
       <h2>Contact</h2>
       <StyledSection>
         <form action='post' noValidate onSubmit={handleSubmit(handleOnSubmit, onError)}>

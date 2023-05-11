@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
+import {Link} from 'react-scroll';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -112,10 +112,17 @@ const StyledLinks = styled(Link)`
 `;
 
 const Navbar = ({toggle, isOpen}) => {
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <StyledHeader>
       <StyledNav>
-        <StyledLogo>Logo</StyledLogo>
+        <StyledLogo onClick={goToTop}>Home</StyledLogo>
         <StyledMobile isOpen={isOpen} onClick={toggle}>
           <div />
           <div />
@@ -123,16 +130,42 @@ const Navbar = ({toggle, isOpen}) => {
         </StyledMobile>
         <StyledMenu>
           <StyledItems>
-            <StyledLinks to='about'>About</StyledLinks>
+            <StyledLinks to='about' spy={true} smooth={true} offset={10} duration={500}>
+              About
+            </StyledLinks>
           </StyledItems>
           <StyledItems>
-            <StyledLinks to='projects'>Projects</StyledLinks>
+            <StyledLinks
+              to='projects'
+              spy={true}
+              smooth={true}
+              offset={-150}
+              duration={500}
+            >
+              Projects
+            </StyledLinks>
           </StyledItems>
           <StyledItems>
-            <StyledLinks to='skills'>Skills</StyledLinks>
+            <StyledLinks
+              to='skills'
+              spy={true}
+              smooth={true}
+              offset={-150}
+              duration={500}
+            >
+              Skills
+            </StyledLinks>
           </StyledItems>
           <StyledItems>
-            <StyledLinks to='contact'>Contact</StyledLinks>
+            <StyledLinks
+              to='contact'
+              spy={true}
+              smooth={true}
+              offset={-150}
+              duration={500}
+            >
+              Contact
+            </StyledLinks>
           </StyledItems>
         </StyledMenu>
       </StyledNav>

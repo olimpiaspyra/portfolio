@@ -58,7 +58,7 @@ const StyledSkills = styled.div`
 
 const SkillsSection = () => {
   return (
-    <StyledContainer>
+    <StyledContainer id='skills'>
       <h2>Skills</h2>
       <StyledSection>
         <h3>Programming</h3>

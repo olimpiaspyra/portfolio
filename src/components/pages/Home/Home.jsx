@@ -16,8 +16,8 @@ const Home = () => {
     <Fragment>
       <Navbar />
       <Sidebar isOpen={isOpen} toggle={toggle} />
-      <ContactSection/>
-      <MainContainer/>
+      <ContactSection />
+      <MainContainer />
     </Fragment>
   );
 };
