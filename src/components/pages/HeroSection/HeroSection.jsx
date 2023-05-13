@@ -1,5 +1,13 @@
 import React from 'react';
+import {motion} from 'framer-motion';
 import styled from 'styled-components';
+
+import {
+  variantsH1,
+  variantsH2,
+  variantsH3,
+  variantsP,
+} from '../../../animation/variants';
 
 const StyledContainer = styled.section`
   max-width: 1000px;
@@ -24,7 +32,7 @@ const StyledContainer = styled.section`
     margin: 0 0 30px 4px;
     color: var(--green);
     font-family: var(--font-mono);
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 400;
   }
 
@@ -83,10 +91,18 @@ const StyledContainer = styled.section`
 const HeroSection = () => {
   return (
     <StyledContainer>
-      <h1>Hi, my name is</h1>
-      <h2>Olimpia Spyra.</h2>
-      <h3>I build a modern website.</h3>
-      <p>I am a junior front end developer and I am constantly improving my skills.</p>
+      <motion.h1 initial='hidden' animate='visible' variants={variantsH1}>
+        Hi, my name is
+      </motion.h1>
+      <motion.h2 initial='hidden' animate='visible' variants={variantsH2}>
+        Olimpia Spyra.
+      </motion.h2>
+      <motion.h3 initial='hidden' animate='visible' variants={variantsH3}>
+        I build a modern website.
+      </motion.h3>
+      <motion.p initial='hidden' animate='visible' variants={variantsP}>
+        I am a junior front end developer and I am constantly improving my skills.
+      </motion.p>
     </StyledContainer>
   );
 };

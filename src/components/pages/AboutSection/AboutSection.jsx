@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useInView} from 'react-intersection-observer';
+import {motion, useAnimation} from 'framer-motion';
 import styled from 'styled-components';
 
 import photo from '../../../assets/images/me.jpg';
+
+import {variantsFromX} from '../../../animation/variants';
 
 const StyledContainer = styled.section`
   max-width: 1000px;
@@ -109,39 +113,58 @@ const StyledImage = styled.div`
 `;
 
 const AboutSection = () => {
+  const controls = useAnimation();
+  const [refView, inView] = useInView({
+    triggerOnce: true,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start('visible');
+    }
+  }, [controls, inView]);
+
   return (
     <StyledContainer id='about'>
       <h2>About Me</h2>
       <StyledSection>
         <StyledText>
-          <p>
-            Hello! My name is Olimpia and I enjoy creating things that live on the
-            Internet. My interest in web development start in 2021 when I decided to
-            sign up in programming course.
-          </p>
-          <p>
-            In November 2021, I graduated from Bootcamp Web Developer Plus. During the
-            course, I learnt <strong className='strong'>HTML</strong>,{' '}
-            <strong className='strong'>CSS</strong> and{' '}
-            <strong className='strong'>JavaScript</strong>, which enable construction of
-            websites and interfaces of web applications. I knew one of the most popular
-            frameworks - <strong className='strong'>React</strong> (including component
-            lifecycle, event handlers and Redux). Together with other students, I took{' '}
-            <strong className='strong'>part in a group project</strong> under Project
-            Manager the supervisions. I learnt to use the basic tools of a modern
-            frontend developer, such as <strong className='strong'>Bootstrap</strong>,{' '}
-            <strong className='strong'>Sass</strong>,{' '}
-            <strong className='strong'>Git</strong>. I have expanded my backend
-            knowledge through the practical use of{' '}
-            <strong className='strong'>Node.js</strong> and{' '}
-            <strong className='strong'>Express.js</strong> technologies.
-          </p>
-          <p>
-            I also regularly deepen my knowledge on a online courses. I got to know{' '}
-            <strong className='strong'>React Hooks</strong> and I am going to learn{' '}
-            <strong className='strong'>TypeScript</strong> in the near future. I have a
-            great desire and motivation to pick up new technologies.
-          </p>
+          <motion.div
+            ref={refView}
+            animate={controls}
+            initial='hidden'
+            variants={variantsFromX('-100px')}
+          >
+            <p>
+              Hello! My name is Olimpia and I enjoy creating things that live on the
+              Internet. My interest in web development start in 2021 when I decided to
+              sign up in programming course.
+            </p>
+            <p>
+              In November 2021, I graduated from Bootcamp Web Developer Plus. During the
+              course, I learnt <strong className='strong'>HTML</strong>,{' '}
+              <strong className='strong'>CSS</strong> and{' '}
+              <strong className='strong'>JavaScript</strong>, which enable construction
+              of websites and interfaces of web applications. I knew one of the most
+              popular frameworks - <strong className='strong'>React</strong> (including
+              component lifecycle, event handlers and Redux). Together with other
+              students, I took{' '}
+              <strong className='strong'>part in a group project</strong> under Project
+              Manager the supervisions. I learnt to use the basic tools of a modern
+              frontend developer, such as <strong className='strong'>Bootstrap</strong>,{' '}
+              <strong className='strong'>Sass</strong>,{' '}
+              <strong className='strong'>Git</strong>. I have expanded my backend
+              knowledge through the practical use of{' '}
+              <strong className='strong'>Node.js</strong> and{' '}
+              <strong className='strong'>Express.js</strong> technologies.
+            </p>
+            <p>
+              I also regularly deepen my knowledge on a online courses. I got to know{' '}
+              <strong className='strong'>React Hooks</strong> and I am going to learn{' '}
+              <strong className='strong'>TypeScript</strong> in the near future. I have
+              a great desire and motivation to pick up new technologies.
+            </p>
+          </motion.div>
         </StyledText>
         <StyledImage>
           <img src={photo} alt='image' />
